@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <link href="/stylesheets/style.css" rel="stylesheet" />
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+  <script>
+    $(function(){
+      $('[data-toggle="tooltip"]').tooltip();
+
+      $('.btn--event-type').click(function(){
+        $('.btn--event-type').removeClass('btn--box__selected');
+        $(this).addClass('btn--box__selected');
+
+        $('.modal__btn#update').removeClass('btn--error').text($('.modal__btn#update').attr('data-default-text'));
+      });
+
+      $('.btn--selector').click(function(){
+        $(this).toggleClass('btn--box__selected');
+      });
+
+      $('.modal__btn#update').click(function(){
+        if(!$('.btn--event-type.btn--box__selected').length){
+          $(this).addClass('btn--error').text('Oops! Please select a primary event type to proceed.');
+
+          return;
+        }
+
+        var height = $('.modal').height();
+
+        if(height + 64 > $(window).height()){
+          $('.modal').animate({
+            height: '450px'
+          }, 450, 'easeInOutCubic');
+        }
+
+        $('.modal__success').show().animate({
+          backgroundColor: '#57D396',
+          height: '100%'
+        }, 450, 'easeInOutCubic', function(){
+          $('.modal__success__content').animate({
+            opacity: 1
+          });
+        });
+      });
+
+      $('.modal__btn#close').click(function(){
+        $('.modal').animate({
+          top: '150px',
+          position: 'relative',
+          opacity: 0
+        }, 450, 'easeInOutCubic');
+      });
+    });
+  </script>
+
+  <body>
+  <!-- <body class="descriptions"> -->
+
+    <div class="background"></div>
+
+    <div class="modal">
+
+      <div class="modal__content">
+        <h1>Want to achieve a higher ranking? Update your listing!</h1>
+        <h2><!--<strong>(1/2)</strong>-->Valencia Street Pop-up Space at Harrington Galleries</h2>
+
+        <br class="double" />
+
+        <h3>What is your primary event type?</h3>
+        <p>If you had to pick one option to represent your space, which would it be?</p>
+
+        <div class="event-types">
+          <span class="btn btn--box btn--event-type">
+            <svg width="24" height="24" viewBox="0 0 24 24"><path d="M23 12c0 6.075-4.925 11-11 11-6.077 0-11-4.924-11-11s4.923-11 11-11c6.075 0 11 4.925 11 11zm1 0c0-6.627-5.373-12-12-12-6.629 0-12 5.372-12 12s5.371 12 12 12c6.627 0 12-5.373 12-12zm-7.341-3.866l-7.5 7 .695.012-2.5-2.5c-.195-.195-.512-.195-.707 0-.195.195-.195.512 0 .707l2.5 2.5c.191.191.498.196.695.012l7.5-7c.202-.188.213-.505.024-.707-.188-.202-.505-.213-.707-.024z" /></svg>
+
+            <div class="btn--event-type__info">
+              <span class="name">Retail</span>
+
+              <p>Store</p>
+              <p>Sample Sale</p>
+              <p>Warehouse Sale</p>
+
+              <a data-toggle="tooltip" data-placement="bottom" data-html="true" title="Product Launch<br />Experiential Testing">See more examples</a>
+            </div>
+          </span>
+
+          <span class="btn btn--box btn--event-type">
+            <svg width="24" height="24" viewBox="0 0 24 24"><path d="M23 12c0 6.075-4.925 11-11 11-6.077 0-11-4.924-11-11s4.923-11 11-11c6.075 0 11 4.925 11 11zm1 0c0-6.627-5.373-12-12-12-6.629 0-12 5.372-12 12s5.371 12 12 12c6.627 0 12-5.373 12-12zm-7.341-3.866l-7.5 7 .695.012-2.5-2.5c-.195-.195-.512-.195-.707 0-.195.195-.195.512 0 .707l2.5 2.5c.191.191.498.196.695.012l7.5-7c.202-.188.213-.505.024-.707-.188-.202-.505-.213-.707-.024z" /></svg>
+
+            <div class="btn--event-type__info">
+              <span class="name">Art</span>
+
+              <p>Showroom</p>
+              <p>Fashion Event</p>
+              <p>Art Show</p>
+
+              <a data-toggle="tooltip" data-placement="bottom" data-html="true" title="Exhibitions">See more examples</a>
+            </div>
+          </span>
+
+          <span class="btn btn--box btn--event-type">
+            <svg width="24" height="24" viewBox="0 0 24 24"><path d="M23 12c0 6.075-4.925 11-11 11-6.077 0-11-4.924-11-11s4.923-11 11-11c6.075 0 11 4.925 11 11zm1 0c0-6.627-5.373-12-12-12-6.629 0-12 5.372-12 12s5.371 12 12 12c6.627 0 12-5.373 12-12zm-7.341-3.866l-7.5 7 .695.012-2.5-2.5c-.195-.195-.512-.195-.707 0-.195.195-.195.512 0 .707l2.5 2.5c.191.191.498.196.695.012l7.5-7c.202-.188.213-.505.024-.707-.188-.202-.505-.213-.707-.024z" /></svg>
+
+            <div class="btn--event-type__info">
+              <span class="name">Food</span>
+
+              <p>Cooking Classes</p>
+              <p>Private Dinners</p>
+              <p>Pop-up Dining</p>
+
+              <a data-toggle="tooltip" data-placement="bottom" data-html="true" title="Temporary Kitchen">See more examples</a>
+            </div>
+          </span>
+
+          <span class="btn btn--box btn--event-type">
+            <svg width="24" height="24" viewBox="0 0 24 24"><path d="M23 12c0 6.075-4.925 11-11 11-6.077 0-11-4.924-11-11s4.923-11 11-11c6.075 0 11 4.925 11 11zm1 0c0-6.627-5.373-12-12-12-6.629 0-12 5.372-12 12s5.371 12 12 12c6.627 0 12-5.373 12-12zm-7.341-3.866l-7.5 7 .695.012-2.5-2.5c-.195-.195-.512-.195-.707 0-.195.195-.195.512 0 .707l2.5 2.5c.191.191.498.196.695.012l7.5-7c.202-.188.213-.505.024-.707-.188-.202-.505-.213-.707-.024z" /></svg>
+
+            <div class="btn--event-type__info">
+              <span class="name">Private</span>
+
+              <p>Buyer Event</p>
+              <p>Work &amp; Meetings</p>
+              <p>Workshops</p>
+
+              <a data-toggle="tooltip" data-placement="bottom" data-html="true" title="Training<br />Team Building<br />Birthday Party<br />Wedding<br />Networking<br />Fitness<br />Conference">See more examples</a>
+            </div>
+          </span>
+        </div>
+
+        <br />
+
+        <h3>Select any additional space attributes below:</h3>
+
+        <div class="selectors">
+          <span class="btn btn--box btn--selector">
+            <svg width="24" height="24" viewBox="0 0 24 24"><path d="M23 12c0 6.075-4.925 11-11 11-6.077 0-11-4.924-11-11s4.923-11 11-11c6.075 0 11 4.925 11 11zm1 0c0-6.627-5.373-12-12-12-6.629 0-12 5.372-12 12s5.371 12 12 12c6.627 0 12-5.373 12-12zm-7.341-3.866l-7.5 7 .695.012-2.5-2.5c-.195-.195-.512-.195-.707 0-.195.195-.195.512 0 .707l2.5 2.5c.191.191.498.196.695.012l7.5-7c.202-.188.213-.505.024-.707-.188-.202-.505-.213-.707-.024z" /></svg>
+
+            <div class="btn--selector__info">
+              <span class="name">Window Display</span>
+              <span class="description">Products viewable from street.</span>
+            </div>
+          </span>
+
+          <span class="btn btn--box btn--selector">
+            <svg width="24" height="24" viewBox="0 0 24 24"><path d="M23 12c0 6.075-4.925 11-11 11-6.077 0-11-4.924-11-11s4.923-11 11-11c6.075 0 11 4.925 11 11zm1 0c0-6.627-5.373-12-12-12-6.629 0-12 5.372-12 12s5.371 12 12 12c6.627 0 12-5.373 12-12zm-7.341-3.866l-7.5 7 .695.012-2.5-2.5c-.195-.195-.512-.195-.707 0-.195.195-.195.512 0 .707l2.5 2.5c.191.191.498.196.695.012l7.5-7c.202-.188.213-.505.024-.707-.188-.202-.505-.213-.707-.024z" /></svg>
+
+            <div class="btn--selector__info">
+              <span class="name">Liquor Permitted</span>
+              <span class="description">Rules vary by location. Inquire for details.</span>
+            </div>
+          </span>
+
+          <span class="btn btn--box btn--selector">
+            <svg width="24" height="24" viewBox="0 0 24 24"><path d="M23 12c0 6.075-4.925 11-11 11-6.077 0-11-4.924-11-11s4.923-11 11-11c6.075 0 11 4.925 11 11zm1 0c0-6.627-5.373-12-12-12-6.629 0-12 5.372-12 12s5.371 12 12 12c6.627 0 12-5.373 12-12zm-7.341-3.866l-7.5 7 .695.012-2.5-2.5c-.195-.195-.512-.195-.707 0-.195.195-.195.512 0 .707l2.5 2.5c.191.191.498.196.695.012l7.5-7c.202-.188.213-.505.024-.707-.188-.202-.505-.213-.707-.024z" /></svg>
+
+            <div class="btn--selector__info">
+              <span class="name">Light Kitchen</span>
+              <span class="description">Hot plate, sink, microwave.</span>
+            </div>
+          </span>
+
+          <span class="btn btn--box btn--selector">
+            <svg width="24" height="24" viewBox="0 0 24 24"><path d="M23 12c0 6.075-4.925 11-11 11-6.077 0-11-4.924-11-11s4.923-11 11-11c6.075 0 11 4.925 11 11zm1 0c0-6.627-5.373-12-12-12-6.629 0-12 5.372-12 12s5.371 12 12 12c6.627 0 12-5.373 12-12zm-7.341-3.866l-7.5 7 .695.012-2.5-2.5c-.195-.195-.512-.195-.707 0-.195.195-.195.512 0 .707l2.5 2.5c.191.191.498.196.695.012l7.5-7c.202-.188.213-.505.024-.707-.188-.202-.505-.213-.707-.024z" /></svg>
+
+            <div class="btn--selector__info">
+              <span class="name">Full Kitchen</span>
+              <span class="description">Oven, stove, full fridge.</span>
+            </div>
+          </span>
+        </div>
+
+      </div>
+
+      <div id="update" class="modal__btn" data-default-text="Update Listing">
+        Update Listing <!--<strong>(1/2)</strong>-->
+      </div>
+
+      <div class="modal__success">
+        <div class="modal__success__content">
+          <h1>Thank you for updating your listings!</h1>
+          <h2>You will now rank higher in search results.</h2>
+
+          <svg class="success" width="177" height="177" viewBox="0 0 177 177"><path d="M128.815 65.384l-55.91 51.627c-.716.656-1.633.988-2.542.988-.954 0-1.908-.361-2.631-1.077l-18.637-18.438c-1.461-1.446-1.461-3.776 0-5.214 1.454-1.446 3.809-1.446 5.27 0l16.087 15.916 53.278-49.193c1.498-1.387 3.861-1.313 5.263.17 1.409 1.497 1.327 3.828-.179 5.222m-40.315-65.384c-48.8 0-88.5 39.707-88.5 88.5s39.7 88.5 88.5 88.5c48.793 0 88.5-39.707 88.5-88.5s-39.707-88.5-88.5-88.5" sketch:type="MSShapeGroup" fill="#fff"/></svg>
+
+          <div id="close" class="modal__btn">
+            Yay, close this box!
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </body>
+</html>

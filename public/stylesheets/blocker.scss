@@ -1,0 +1,225 @@
+.background {
+  background: url(../images/blur.png) no-repeat;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+
+  &::after {
+    background: rgba(0,0,0,0.5);
+    width: 100%;
+    height: 100%;
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.modal {
+  background: #FFFFFF;
+  width: 770px;
+  padding: 0;
+  margin: 64px auto;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  z-index: 3;
+
+  .modal__content {
+    padding: 32px;
+  }
+
+  .modal__success {
+    background: $green-dark;
+    width: 100%;
+    height: 0px;
+    padding-top: 32px;
+    color: #FFFFFF;
+    overflow: hidden;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-radius: 4px;
+    z-index: 6;
+    display: none;
+
+    h2 {
+      color: $white-light;
+    }
+
+    .modal__success__content {
+      opacity: 0;
+    }
+
+    .modal__btn {
+      background: #FFFFFF;
+      color: $green;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      &:hover {
+        background: lighten($green,35%);
+      }
+    }
+
+    svg.success {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -88px;
+      margin-left: -88px;
+    }
+  }
+
+  .modal__btn {
+    background: $green;
+    width: 100%;
+    color: #FFFFFF;
+    font-size: 16px;
+    text-align: center;
+    padding: 24px;
+    cursor: pointer;
+    @include border-bottom-radius(4px);
+    @include transition-duration(150ms);
+
+    &:hover {
+      background: $green-dark;
+      @include transition-duration(150ms);
+    }
+
+    &.btn--error {
+      background: #F0382F;
+    }
+
+    strong {
+      color: $white-light;
+    }
+  }
+
+  h1 {
+    font-size: 23px;
+    font-weight: bold;
+		text-align: center;
+    padding-bottom: 4px;
+	}
+
+  h2 {
+    color: $gray-light;
+    font-size: 16px;
+		text-align: center;
+
+		strong {
+	    color: $green;
+		}
+	}
+
+  h3 {
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  p {
+    font-size: 12px;
+    font-weight: 200;
+  }
+}
+
+.event-types {
+  padding: 16px 0;
+  margin: 0 -4px;
+  @include display(flex);
+  @include flex-direction(row);
+}
+
+.btn.btn--event-type {
+  margin: 0 4px;
+
+  p {
+    margin-top: 4px;
+  }
+
+  a {
+    padding: 0;
+    margin: 16px 0 0 0;
+    font-size: 10px;
+    padding-bottom: 2px;
+    border-bottom: 1px dashed $gray-light;
+    display: inline-block;
+    cursor: help;
+  }
+}
+
+.btn--event-type__info {
+  padding-left: 8px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.selectors {
+  padding: 16px 0 0 0;
+  margin: 0 -4px;
+  @include display(flex);
+  @include flex-direction(row);
+}
+
+.btn--selector {
+  margin: 0 4px;
+  @include clearfix();
+
+  svg {
+    float: left;
+  }
+}
+
+.btn--selector__info {
+  padding-left: 8px;
+  vertical-align: top;
+  float: left;
+  @include clearfix();
+
+  span.name {
+    font-size: 12px;
+    float: left;
+  }
+
+  span.description {
+    font-size: 12px;
+    font-weight: 200;
+    margin-top: 4px;
+    float: right;
+    display: none;
+  }
+}
+
+body.descriptions {
+  .selectors {
+    margin: -8px 0;
+    display: block;
+  }
+
+  .btn--selector {
+    width: 100%;
+    max-width: 100%;
+    margin: 8px 0;
+    @include display(flex);
+    @include flex-direction(row);
+
+    svg {
+      @include flex(0 1 auto);
+    }
+
+    span.description {
+      display: block;
+    }
+  }
+
+  .btn--selector__info {
+    @include flex(1);
+  }
+}
